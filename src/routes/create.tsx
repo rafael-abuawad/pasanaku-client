@@ -12,13 +12,20 @@ export const Route = createFileRoute("/create")({
 
 function RouteComponent() {
   const [token, setToken] = useState<Token | null>(null);
+  const [amount, setAmount] = useState<number>(0);
+  const [addresses, setAddresses] = useState<string[]>([]);
+
+  const handleCreate = () => {
+    console.log(token, amount, addresses);
+  };
+
   return (
     <section className="container mx-auto px-6 py-12">
-      <div className="flex gap-3 flex-col">
-        <TokenInput token={token} />
+      <div className="flex gap-5 flex-col">
+        <TokenInput token={token} value={amount} onValueChange={setAmount} />
         <TokenCombobox filters="all" onValueChange={setToken} />
-        <WalletAddressField />
-        <Button className="w-full" size="lg">
+        <WalletAddressField value={addresses} onValueChange={setAddresses} />
+        <Button className="w-full" size="lg" onClick={handleCreate}>
           Create
         </Button>
       </div>

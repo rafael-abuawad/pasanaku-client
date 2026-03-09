@@ -12,12 +12,8 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group";
 import { Badge } from "@/components/ui/badge";
-
-const ARBISCAN_ADDRESS_URL = "https://arbiscan.io/address";
-
-function shortenAddress(address: string) {
-  return `${address.slice(0, 6)}\u2026${address.slice(-4)}`;
-}
+import { ARBISCAN_ADDRESS_URL } from "@/lib/constants";
+import { shortenAddress } from "@/lib/utils";
 
 export interface WalletAddressFieldProps {
   value?: string[];
@@ -90,6 +86,7 @@ export function WalletAddressField({ value, onValueChange, disabled }: WalletAdd
         />
         <InputGroupAddon align="inline-end">
           <InputGroupButton
+            type="submit"
             onClick={handleAdd}
             disabled={disabled || !input.trim()}
             aria-label="Add address"
