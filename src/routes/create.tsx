@@ -5,6 +5,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import type { Token } from "@/lib/types";
 import { Button } from "@/components/ui/button";
+import { FieldGroup, FieldSet } from "@/components/ui/field";
 
 export const Route = createFileRoute("/create")({
   component: RouteComponent,
@@ -21,14 +22,19 @@ function RouteComponent() {
 
   return (
     <section className="container mx-auto px-6 py-12">
-      <div className="flex gap-5 flex-col">
-        <TokenInput token={token} value={amount} onValueChange={setAmount} />
-        <TokenCombobox filters="all" onValueChange={setToken} />
-        <WalletAddressField value={addresses} onValueChange={setAddresses} />
-        <Button className="w-full" size="lg" onClick={handleCreate}>
-          Create
-        </Button>
-      </div>
+      <FieldSet>
+        <FieldGroup>
+          <TokenCombobox filters="all" onValueChange={setToken} />
+
+          <TokenInput token={token} value={amount} onValueChange={setAmount} />
+
+          <WalletAddressField value={addresses} onValueChange={setAddresses} />
+
+          <Button className="w-full" size="lg" onClick={handleCreate}>
+            Create
+          </Button>
+        </FieldGroup>
+      </FieldSet>
     </section>
   );
 }

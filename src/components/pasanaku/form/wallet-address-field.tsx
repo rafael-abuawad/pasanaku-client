@@ -14,6 +14,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { ARBISCAN_ADDRESS_URL } from "@/lib/constants";
 import { shortenAddress } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { useConnection } from "wagmi";
 
 export interface WalletAddressFieldProps {
   value?: string[];
@@ -25,6 +27,7 @@ export function WalletAddressField({ value, onValueChange, disabled }: WalletAdd
   const [internalValue, setInternalValue] = useState<string[]>([]);
   const [input, setInput] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const { address, isConnected } = useConnection();
 
   const addresses = value !== undefined ? value : internalValue;
 
@@ -33,6 +36,14 @@ export function WalletAddressField({ value, onValueChange, disabled }: WalletAdd
       setInternalValue(next);
     }
     onValueChange?.(next);
+  };
+
+  const handleAddOwn = () => {
+    if (!isConnected || !address) return;
+
+    updateAddresses([...addresses, address!]);
+    setInput("");
+    setError(null);
   };
 
   const handleAdd = () => {
@@ -131,6 +142,11 @@ export function WalletAddressField({ value, onValueChange, disabled }: WalletAdd
       ) : (
         <FieldDescription className="text-xs">
           Add wallet addresses to participate.
+          {isConnected && address && (
+            <Button variant="link" size="xs" onClick={handleAddOwn} className="p-0 ml-1 text-xs">
+              Add your own.
+            </Button>
+          )}
         </FieldDescription>
       )}
     </Field>
