@@ -5,4 +5,5 @@ export type Token = {
   address: Address;
   icon: string;
   category: "yield" | "stable";
+  decimals: number;
 };
