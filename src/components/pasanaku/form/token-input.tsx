@@ -38,7 +38,10 @@ export function TokenInput({ value, onValueChange, token }: TokenInputProps) {
   });
 
   const formattedBalance = useMemo(() => {
-    return formatUnits(balanceOf.data ?? BigInt(0), decimals.data ?? 18);
+    return Intl.NumberFormat("en-US", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    }).format(Number(balanceOf.data ?? 0) / 10 ** (decimals.data ?? 18));
   }, [balanceOf.data, decimals.data]);
 
   const dataIsLoading = balanceOf.isLoading || decimals.isLoading;

@@ -1,3 +1,4 @@
+import { formatCompactNumber } from "@/lib/format-number";
 import type { Token } from "@/lib/types";
 
 interface TokenBadgeProps {
@@ -8,10 +9,6 @@ interface TokenBadgeProps {
 
 export function TokenBadge({ token, amount, participans }: TokenBadgeProps) {
   const totalAmount = amount * participans;
-  const formattedAmount = Intl.NumberFormat("en-US", {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
-  }).format(totalAmount);
 
   return (
     <div className="flex items-center gap-2.5 rounded-xl border border-border bg-muted/40 px-3 py-2">
@@ -21,7 +18,8 @@ export function TokenBadge({ token, amount, participans }: TokenBadgeProps) {
 
       <div className="flex flex-col min-w-0">
         <p className="text-md leading-tight truncate">
-          {formattedAmount} <span className="text-xs font-semibold">{token.symbol}</span>
+          {formatCompactNumber(totalAmount)}{" "}
+          <span className="text-xs font-semibold">{token.symbol}</span>
         </p>
       </div>
     </div>

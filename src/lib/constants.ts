@@ -1,4 +1,3 @@
-// Token icons
 import crvUsdIcon from "@/assets/images/tokens/crvUSD.svg";
 import scrvUsdIcon from "@/assets/images/tokens/scrvUSD.svg";
 import daiIcon from "@/assets/images/tokens/DAI.svg";
@@ -8,13 +7,17 @@ import usdsIcon from "@/assets/images/tokens/USDS.svg";
 import susdsIcon from "@/assets/images/tokens/sUSDS.svg";
 import usdcIcon from "@/assets/images/tokens/USDC.svg";
 import usdt0Icon from "@/assets/images/tokens/USDT0.svg";
+import wethIcon from "@/assets/images/tokens/WETH.svg";
 import type { Token } from "@/lib/types";
+
+export const PASANAKU_ADDRESS = "0x530a4cBdC461181519E5459309411710e8C23EE6";
 
 export const ARBISCAN_TOKEN_URL = "https://arbiscan.io/token";
 
 export const ARBISCAN_ADDRESS_URL = "https://arbiscan.io/address";
 
 export const TOKENS: Token[] = [
+  /*
   {
     symbol: "crvUSD",
     address: "0x498bf2b1e120fed3ad3d42ea2165e9b73f99c1e5",
@@ -77,5 +80,27 @@ export const TOKENS: Token[] = [
     icon: usdt0Icon,
     category: "stable",
     decimals: 6,
+  },
+  */
+  {
+    symbol: "USDC",
+    address: "0xd24Eab8A12c6d42d4614493Eb2F3F9aD34b1CF5F",
+    icon: usdcIcon,
+    category: "stable",
+    decimals: 6,
+  },
+  {
+    symbol: "USDT0",
+    address: "0xE0FB0F453aBfbd74368074cf0291711FC82cBc07",
+    icon: usdt0Icon,
+    category: "stable",
+    decimals: 6,
+  },
+  {
+    symbol: "WETH",
+    address: "0x1c97C5715F20445400716DB9b1EA2e82F873cF35",
+    icon: wethIcon,
+    category: "yield",
+    decimals: 18,
   },
 ];
