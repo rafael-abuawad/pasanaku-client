@@ -60,7 +60,7 @@ export function GameCard({ tokenId }: GameCardProps) {
     <Card className="relative mx-auto w-full pt-0">
       <div className="absolute inset-0 z-30 aspect-square bg-black/35" />
       <img
-        src="https://avatar.vercel.sh/shadcn1"
+        src={data.tokenURI ?? "https://avatar.vercel.sh/shadcn1"}
         alt="Pasanaku image uri"
         className="relative z-20 aspect-square w-full object-cover brightness-60 grayscale dark:brightness-40"
       />

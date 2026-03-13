@@ -5,7 +5,6 @@ import { erc20Abi } from "@/lib/abi";
 import type { Token } from "@/lib/types";
 import { BanIcon, Loader2Icon } from "lucide-react";
 import { useMemo } from "react";
-import { formatUnits } from "viem";
 import { useConnection, useReadContract } from "wagmi";
 
 export interface TokenInputProps {

@@ -13,12 +13,16 @@ export function useReadPasanakuGame(tokenId: bigint) {
     args: [tokenId],
   });
 
-  console.log("useReadPasanakuGame", tokenId);
-  console.log({
-    data,
-    isLoading,
-    isError,
-    error,
+  const {
+    data: tokenURI,
+    isLoading: isLoadingTokenURI,
+    isError: isErrorTokenURI,
+    error: errorTokenURI,
+  } = useReadContract({
+    address: PASANAKU_ADDRESS,
+    abi: pasanakuAbi,
+    functionName: "uri",
+    args: [tokenId],
   });
 
   const tokenFromList = useMemo(() => {
@@ -28,24 +32,14 @@ export function useReadPasanakuGame(tokenId: bigint) {
     return TOKENS.find((token) => token.address.toLowerCase() === data.asset.toLowerCase());
   }, [data]);
 
-  console.log("tokenFromList", tokenFromList);
-  console.log({
-    data: {
-      game: data,
-      token: tokenFromList,
-    },
-    isLoading,
-    isError,
-    error,
-  });
-
   return {
     data: {
       game: data,
       token: tokenFromList,
+      tokenURI,
     },
-    isLoading,
-    isError,
-    error,
+    isLoading: isLoading || isLoadingTokenURI,
+    isError: isError || isErrorTokenURI,
+    error: error || errorTokenURI,
   };
 }
