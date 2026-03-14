@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { isAddress, getAddress } from "viem";
-import { PlusIcon, XIcon, ExternalLinkIcon } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { PlusSignIcon, Cancel01Icon, Link01Icon } from "@hugeicons/core-free-icons";
 
 import { Field, FieldLabel, FieldDescription } from "@/components/ui/field";
 import {
@@ -102,7 +103,7 @@ export function WalletAddressField({ value, onValueChange, disabled }: WalletAdd
             disabled={disabled || !input.trim()}
             aria-label="Add address"
           >
-            <PlusIcon />
+            <HugeiconsIcon icon={PlusSignIcon} size={16} />
             Add
           </InputGroupButton>
         </InputGroupAddon>
@@ -125,7 +126,7 @@ export function WalletAddressField({ value, onValueChange, disabled }: WalletAdd
                 className="inline-flex items-center gap-1 hover:text-primary transition-colors"
               >
                 {shortenAddress(address)}
-                <ExternalLinkIcon className="size-2.5" />
+                <HugeiconsIcon icon={Link01Icon} size={10} />
               </a>
               <button
                 type="button"
@@ -134,7 +135,7 @@ export function WalletAddressField({ value, onValueChange, disabled }: WalletAdd
                 aria-label={`Remove ${shortenAddress(address)}`}
                 className="ml-0.5 rounded-full p-0.5 hover:bg-destructive/10 hover:text-destructive transition-colors disabled:pointer-events-none disabled:opacity-50"
               >
-                <XIcon className="size-3" />
+                <HugeiconsIcon icon={Cancel01Icon} size={12} />
               </button>
             </Badge>
           ))}

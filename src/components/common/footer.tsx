@@ -1,5 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { ModeToggle } from "@/components/common/theme-toggle";
+import { Link } from "@tanstack/react-router";
 import { Button } from "../ui/button";
 
 const socialLinks = [
@@ -17,6 +18,10 @@ export function Footer() {
 
         <div className="flex items-center gap-3">
           <nav className="flex items-center gap-1 text-sm text-muted-foreground">
+            <Button variant="link" size="sm" asChild>
+              <Link to="/about">About</Link>
+            </Button>
+            <span aria-hidden>·</span>
             {socialLinks.map((link, i) => (
               <span key={link.label} className="inline-flex items-center gap-1">
                 {i > 0 && <span aria-hidden>·</span>}

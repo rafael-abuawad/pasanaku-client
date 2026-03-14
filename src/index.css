@@ -12,6 +12,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+    --spacing: 0.275rem;
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
     --card: oklch(1 0 0);
@@ -44,6 +45,10 @@
     --sidebar-accent-foreground: oklch(0.205 0 0);
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.708 0 0);
+    --accent-warm: oklch(0.64 0.14 45);
+    --accent-warm-strong: oklch(0.58 0.16 38);
+    --surface-warm: oklch(0.98 0.01 55);
+    --surface-warm-contrast: oklch(0.95 0.02 58);
 }
 
 .dark {
@@ -78,6 +83,10 @@
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.556 0 0);
+    --accent-warm: oklch(0.72 0.14 58);
+    --accent-warm-strong: oklch(0.67 0.16 52);
+    --surface-warm: oklch(0.23 0.02 54);
+    --surface-warm-contrast: oklch(0.28 0.03 58);
 }
 
 @theme inline {
@@ -133,4 +142,35 @@
   html {
     @apply font-sans;
     }
+}
+
+@layer components {
+  .page-section {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .page-section::before {
+    content: "";
+    position: absolute;
+    inset: -35% -20% 20%;
+    z-index: -2;
+    background:
+      radial-gradient(circle at 12% 18%, color-mix(in oklab, var(--accent-warm) 28%, transparent), transparent 44%),
+      radial-gradient(circle at 85% 20%, color-mix(in oklab, var(--accent-warm-strong) 26%, transparent), transparent 48%),
+      linear-gradient(165deg, color-mix(in oklab, var(--surface-warm) 85%, var(--background)) 0%, var(--background) 78%);
+    pointer-events: none;
+  }
+
+  .page-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.24;
+    background-image: radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--foreground) 14%, transparent) 1px, transparent 0);
+    background-size: 12px 12px;
+    pointer-events: none;
+  }
 }

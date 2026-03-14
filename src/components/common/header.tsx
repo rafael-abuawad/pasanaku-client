@@ -1,7 +1,8 @@
 import { useState } from "react";
 
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Cancel01Icon, Menu01Icon, Wallet01Icon } from "@hugeicons/core-free-icons";
 import { ConnectKitButton } from "connectkit";
-import { Menu, Wallet, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/button";
@@ -10,7 +11,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-background">
+    <header className="sticky top-0 z-50 border-b bg-transparent backdrop-blur-md">
       <div className="flex w-full items-center justify-between px-6 py-4 container mx-auto">
         <Link to="/" className="font-brand text-2xl tracking-wide">
           Pasanaku
@@ -27,7 +28,7 @@ export function Header() {
           <ConnectKitButton.Custom>
             {({ isConnected, isConnecting, show, truncatedAddress, ensName }) => (
               <Button onClick={show} disabled={isConnecting} size="sm">
-                <Wallet className="size-4" />
+                <HugeiconsIcon icon={Wallet01Icon} size={16} />
                 {isConnecting
                   ? "Connecting..."
                   : isConnected
@@ -43,7 +44,7 @@ export function Header() {
           <ConnectKitButton.Custom>
             {({ isConnected, isConnecting, show, truncatedAddress, ensName }) => (
               <Button onClick={show} disabled={isConnecting} size="sm">
-                <Wallet className="size-4" />
+                <HugeiconsIcon icon={Wallet01Icon} size={16} />
                 {isConnecting
                   ? "Connecting..."
                   : isConnected
@@ -59,7 +60,11 @@ export function Header() {
             aria-controls="mobile-nav"
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
           >
-            {isMobileMenuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
+            {isMobileMenuOpen ? (
+              <HugeiconsIcon icon={Cancel01Icon} size={16} />
+            ) : (
+              <HugeiconsIcon icon={Menu01Icon} size={16} />
+            )}
             <span className="sr-only">{isMobileMenuOpen ? "Close menu" : "Open menu"}</span>
           </Button>
         </div>
@@ -76,6 +81,11 @@ export function Header() {
           <Button variant="link" size="sm" className="justify-start" asChild>
             <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
               Dashboard
+            </Link>
+          </Button>
+          <Button variant="link" size="sm" className="justify-start" asChild>
+            <Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>
+              About
             </Link>
           </Button>
           <Button variant="link" size="sm" className="justify-start" asChild>

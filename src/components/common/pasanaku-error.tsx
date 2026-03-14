@@ -1,4 +1,5 @@
-import { AlertTriangleIcon, ChevronsUpDownIcon } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Alert01Icon, ArrowUpDownIcon } from "@hugeicons/core-free-icons";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
@@ -30,7 +31,7 @@ export function PasanakuError({ error }: PasanakuErrorProps) {
       <Empty className="min-h-full">
         <EmptyHeader>
           <EmptyMedia variant="icon">
-            <AlertTriangleIcon />
+            <HugeiconsIcon icon={Alert01Icon} size={24} />
           </EmptyMedia>
           <EmptyTitle>Something went wrong</EmptyTitle>
           <EmptyDescription>
@@ -41,7 +42,7 @@ export function PasanakuError({ error }: PasanakuErrorProps) {
           <Collapsible className="w-full max-w-sm space-y-2">
             <CollapsibleTrigger asChild>
               <Button variant="ghost" size="sm" className="gap-1.5">
-                <ChevronsUpDownIcon className="size-3.5" />
+                <HugeiconsIcon icon={ArrowUpDownIcon} size={16} />
                 Show error details
               </Button>
             </CollapsibleTrigger>

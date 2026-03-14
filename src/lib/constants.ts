@@ -1,3 +1,4 @@
+/*
 import crvUsdIcon from "@/assets/images/tokens/crvUSD.svg";
 import scrvUsdIcon from "@/assets/images/tokens/scrvUSD.svg";
 import daiIcon from "@/assets/images/tokens/DAI.svg";
@@ -5,6 +6,7 @@ import mimIcon from "@/assets/images/tokens/MIM.svg";
 import pyusdIcon from "@/assets/images/tokens/PYUSD.svg";
 import usdsIcon from "@/assets/images/tokens/USDS.svg";
 import susdsIcon from "@/assets/images/tokens/sUSDS.svg";
+*/
 import usdcIcon from "@/assets/images/tokens/USDC.svg";
 import usdt0Icon from "@/assets/images/tokens/USDT0.svg";
 import wethIcon from "@/assets/images/tokens/WETH.svg";

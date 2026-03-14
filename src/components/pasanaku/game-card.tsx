@@ -1,6 +1,7 @@
 import { useReadPasanakuGame } from "@/hooks/use-pasanaku-game";
 import { formatUnits } from "viem";
-import { AlertTriangleIcon } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Alert01Icon } from "@hugeicons/core-free-icons";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { TokenBadge } from "@/components/pasanaku/badges/token-badge";
@@ -38,7 +39,7 @@ export function GameCard({ tokenId }: GameCardProps) {
       <Card className="relative mx-auto w-full border-destructive/50">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-destructive">
-            <AlertTriangleIcon className="size-5" />
+            <HugeiconsIcon icon={Alert01Icon} size={16} />
             Could not load game
           </CardTitle>
         </CardHeader>

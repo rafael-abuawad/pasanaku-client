@@ -3,7 +3,8 @@ import { Field, FieldDescription, FieldError, FieldLabel } from "@/components/ui
 import { Input } from "@/components/ui/input";
 import { erc20Abi } from "@/lib/abi";
 import type { Token } from "@/lib/types";
-import { BanIcon, Loader2Icon } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ShieldBanIcon, LoaderPinwheelIcon } from "@hugeicons/core-free-icons";
 import { useMemo } from "react";
 import { useConnection, useReadContract } from "wagmi";
 
@@ -59,13 +60,14 @@ export function TokenInput({ value, onValueChange, token }: TokenInputProps) {
       {dataIsLoading && (
         <FieldDescription>
           <div className="flex items-center gap-1">
-            <Loader2Icon className="size-4 animate-spin" /> Loading balance...
+            <HugeiconsIcon icon={LoaderPinwheelIcon} size={16} className="animate-spin" /> Loading
+            balance...
           </div>
         </FieldDescription>
       )}
       {dataIsError && (
         <FieldError>
-          <BanIcon className="size-4" /> Error loading balance
+          <HugeiconsIcon icon={ShieldBanIcon} size={16} /> Error loading balance
         </FieldError>
       )}
       {!dataIsLoading && !dataIsError && token && (
