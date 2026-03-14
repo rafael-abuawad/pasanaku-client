@@ -8,6 +8,7 @@ import { TokenBadge } from "@/components/pasanaku/badges/token-badge";
 import { PlayerBadge } from "@/components/pasanaku/badges/player-badge";
 import { RecoveredBadge } from "@/components/pasanaku/badges/recovered-badge";
 import { EndedBadge } from "@/components/pasanaku/badges/ended-badge";
+import layoutA from "@/assets/images/layouts/layout-a-frame.svg";
 
 interface GameCardProps {
   tokenId: bigint;
@@ -58,25 +59,25 @@ export function GameCard({ tokenId }: GameCardProps) {
   const title = `Pasanaku #${tokenId.toString()}`;
 
   return (
-    <Card className="relative mx-auto w-full pt-0">
-      <div className="absolute inset-0 z-30 aspect-square bg-black/35" />
-      <img
-        src={data.tokenURI ?? "https://avatar.vercel.sh/shadcn1"}
-        alt="Pasanaku image uri"
-        className="relative z-20 aspect-square w-full object-cover brightness-60 grayscale dark:brightness-40"
-      />
+      <Card className="relative mx-auto w-full pt-0">
+        <div className="absolute inset-0 z-30 aspect-square backdrop-hue-rotate-270" />
+        <img
+          src={layoutA}
+          alt="Pasanaku image uri"
+          className="relative z-20 aspect-square w-full object-cover"
+        />
 
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="flex flex-row gap-2">
-          {token && <TokenBadge token={token} amount={amount} participans={playerCount} />}
-          <PlayerBadge count={playerCount} />
-          {game.recovered && <RecoveredBadge />}
-          {game.ended && <EndedBadge />}
-        </div>
-      </CardContent>
-    </Card>
+        <CardHeader>
+          <CardTitle>{title}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-row gap-2">
+            {token && <TokenBadge token={token} amount={amount} participans={playerCount} />}
+            <PlayerBadge count={playerCount} />
+            {game.recovered && <RecoveredBadge />}
+            {game.ended && <EndedBadge />}
+          </div>
+        </CardContent>
+      </Card>
   );
 }
